@@ -69,9 +69,7 @@ const awsRegionToExchange: Record<string, string> = {
 const Globe = () => {
   const [mode, setMode] = useState<"realtime" | "historical">("realtime");
   const [lineType, setLineType] = useState<"arc" | "straight">("arc");
-  const [selectedExchange, setSelectedExchange] = useState<Exchange | null>(
-    null
-  );
+  const [, setSelectedExchange] = useState<Exchange | null>(null); // fixed
   const [selectedPair, setSelectedPair] = useState<{
     from: string;
     to: string;
@@ -83,15 +81,16 @@ const Globe = () => {
   const history = useLatencyHistory(exchanges, mode);
 
   const latencies =
-    (latencyData
+    latencyData
       ?.map(({ region, latency }) => {
         const from = awsRegionToExchange[region];
         const to = "London Stock Exchange";
         if (!from || !to) return null;
         return { from, to, latency };
       })
-      .filter(Boolean) as { from: string; to: string; latency: number }[]) ||
-    [];
+      .filter(
+        (l): l is { from: string; to: string; latency: number } => l !== null
+      ) || [];
 
   return (
     <div

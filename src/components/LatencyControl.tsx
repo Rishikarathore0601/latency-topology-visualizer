@@ -2,11 +2,14 @@
 
 import React from "react";
 
+type Mode = "realtime" | "historical";
+type LineType = "arc" | "straight";
+
 type Props = {
-  mode: "realtime" | "historical";
-  onChange: (mode: "realtime" | "historical") => void;
-  lineType: "arc" | "straight";
-  onLineTypeChange: (lineType: "arc" | "straight") => void;
+  mode: Mode;
+  onChange: (mode: Mode) => void;
+  lineType: LineType;
+  onLineTypeChange: (lineType: LineType) => void;
 };
 
 const LatencyControl = ({
@@ -18,17 +21,26 @@ const LatencyControl = ({
   return (
     <div style={{ position: "absolute", top: 20, left: 20, zIndex: 10 }}>
       <div style={{ marginBottom: 8 }}>
-        <label style={{ color: "white", marginRight: 8 }}>Latency Mode:</label>
-        <select value={mode} onChange={(e) => onChange(e.target.value as any)}>
+        <label style={{ color: "white", marginRight: 8 }} htmlFor="latencyMode">
+          Latency Mode:
+        </label>
+        <select
+          id="latencyMode"
+          value={mode}
+          onChange={(e) => onChange(e.target.value as Mode)}
+        >
           <option value="realtime">Realtime</option>
           <option value="historical">Historical</option>
         </select>
       </div>
       <div>
-        <label style={{ color: "white", marginRight: 8 }}>Line Type:</label>
+        <label style={{ color: "white", marginRight: 8 }} htmlFor="lineType">
+          Line Type:
+        </label>
         <select
+          id="lineType"
           value={lineType}
-          onChange={(e) => onLineTypeChange(e.target.value as any)}
+          onChange={(e) => onLineTypeChange(e.target.value as LineType)}
         >
           <option value="arc">Arc</option>
           <option value="straight">Straight</option>
