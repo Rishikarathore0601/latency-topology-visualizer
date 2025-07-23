@@ -21,7 +21,7 @@ const LatencyControl = ({
   return (
     <div style={{ position: "absolute", top: 20, left: 20, zIndex: 10 }}>
       <div style={{ marginBottom: 8 }}>
-        <label style={{ color: "white", marginRight: 8 }} htmlFor="latencyMode">
+        <label style={{ color: "blue", marginRight: 8 }} htmlFor="latencyMode">
           Latency Mode:
         </label>
         <select
@@ -34,7 +34,7 @@ const LatencyControl = ({
         </select>
       </div>
       <div>
-        <label style={{ color: "white", marginRight: 8 }} htmlFor="lineType">
+        <label style={{ color: "blue", marginRight: 8 }} htmlFor="lineType">
           Line Type:
         </label>
         <select
