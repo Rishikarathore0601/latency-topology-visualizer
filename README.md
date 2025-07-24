@@ -102,6 +102,7 @@ MIT — free to use for educational and demo purposes.
 🙋‍♀️ Author
 Rishika
 [LinkedIn](https://www.linkedin.com/in/rishika-rathore-rishika/)
+|
 [Portfolio]([https://your-portfolio.com](https://rishika-rathore-portfolio.netlify.app/))
 
 
