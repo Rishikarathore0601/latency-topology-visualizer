@@ -1,36 +1,107 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🌐 Latency Topology Visualizer
 
-## Getting Started
+This project is an interactive **3D globe-based visualization** of real-time and historical network latency between major cloud exchange locations hosted on AWS, Azure, and GCP. Built using **Next.js**, **React Three Fiber**, and **Drei**, it allows users to:
 
-First, run the development server:
+- Explore cloud provider regions in 3D
+- View simulated latency data
+- Switch between realtime and historical modes
+- Inspect latencies between cloud exchanges
+- Toggle between arc and straight connection lines
+- View latency trends in a dynamic overlay chart
 
-```bash
+---
+
+## ✨ Features
+
+- 🌍 3D globe with realistic Earth texture
+- 📡 Latency lines connecting exchange locations
+- 🕒 Toggle between **Realtime** and **Historical** data
+- 🟢 Live simulated latency updates (every 2 seconds)
+- 🌙 Light/Dark theme toggle
+- 📈 Mini chart overlay for latency history
+- 🔌 No backend dependencies — runs entirely in-browser
+
+---
+
+## 📦 Tech Stack
+
+- **Next.js 14**
+- **React Three Fiber**
+- **@react-three/drei**
+- **TypeScript**
+- **React Hooks**
+
+---
+
+## 🚀 Getting Started
+
+```
+git clone https://github.com/your-username/latency-visualizer.git
+cd latency-visualizer
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+```
+Visit http://localhost:3000 in your browser.
+
+📝 Project Structure
+```
+components/
+  ├── Globe.tsx
+  ├── ExchangeMarker.tsx
+  ├── ConnectionLine.tsx
+  ├── LatencyControl.tsx
+  ├── LatencyChart.tsx
+  ├── ThemeToggle.tsx
+hooks/
+  ├── useLatencyData.ts
+  ├── useLatencyHistory.ts
+utils/
+  └── convertLatLngToVector3.ts
+public/
+  └── earth.jpg
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+❓ Why I Didn't Use a Real API
+This is a simulation-based visualizer by design. Here's why:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+🚫 No Real API Used — Explanation:
+Assignment Scope & Instruction:
+The assignment emphasized latency visualization, not API integration. The focus is on rendering logic, UI interactivity, and 3D data representation.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+No Public API Available for Global Latency in Real-Time:
+Accurate real-time cloud-to-cloud latency APIs are generally private or require credentials/subscriptions. Using mock data keeps the app portable and self-contained.
 
-## Learn More
+Simplified Evaluation:
+Simulated latency allows interviewers to test the frontend logic without worrying about auth keys, rate limits, or server dependencies.
 
-To learn more about Next.js, take a look at the following resources:
+Pluggable Architecture:
+The useLatencyData.ts and useLatencyHistory.ts hooks are designed to be swapped with real API calls if needed later.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+📦 Simulated Latency Logic
+Realtime latency is updated every 2 seconds using setInterval.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+History is stored in-memory for the past 30 data points.
 
-## Deploy on Vercel
+All data is randomly generated but follows a consistent structure.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```
+const latency = Math.floor(Math.random() * 200 + 20); // 20ms to 220ms
+```
+🌐 Deployment
+To deploy on Vercel:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```
+npm install -g vercel
+```
+vercel
+Or push to GitHub and connect your repo at https://vercel.com
+
+📄 License
+MIT — free to use for educational and demo purposes.
+
+🙋‍♀️ Author
+Rishika
+[LinkedIn](https://www.linkedin.com/in/rishika-rathore-rishika/)
+[Portfolio]([https://your-portfolio.com](https://rishika-rathore-portfolio.netlify.app/))
+
+
